@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Your Plants</title>
+</head>
+<body>
+
+<section class="blog_w3ls py-3 pb-5 pt-10" id="test">
+    <div class="container pb-xl-5 pb-lg-3">
+        <h3 class="title text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">Test Your Plants</h3>
+        <div class="row" style="justify-content: center;">
+            <form action="http://localhost:3000/makePrediction" method="POST" enctype="multipart/form-data">
+                <div class="form-group text-center">
+                    <label for="exampleFormControlFile1"><b>Input a file</b></label>
+                    <input type="file" name="file" class="form-control-file" id="inputImage" onchange="previewImage(event)" required>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Predict</button>
+                </div>
+            </form>
+        </div>
+        <img id="output-image" class="rounded mx-auto d-block" />
+        <br />
+    </div>
+</section>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('output-image');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+
+</body>
+</html>
+
